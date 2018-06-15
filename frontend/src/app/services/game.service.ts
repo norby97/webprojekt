@@ -16,6 +16,6 @@ export class GameService {
     kerdesLekeres(){
       let headers = new Headers();
       headers.append('Content-Type','application/json');
-      return this.http.get('http://localhost:3000/users/game', {headers:headers}).map(res => res.json());
+      return this.http.get('http://localhost:3000/games/game', {headers:headers}).map(res => res.json());
     }
 }

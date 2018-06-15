@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
     private router : Router
   ) { }
 
-//tehat mikor betoltjuk a profil oldalt akkor le kell kerjuk hogy van bejelentkezve felhasznalo
+//tehat mikor betoltjuk a profil oldalt akkor le kell kerjuk a felhasznalo adataid 
   ngOnInit() {
     this.regloginService.profilLekeres().subscribe(profil => {
     this.felhasznalo = profil.felhasznalo;

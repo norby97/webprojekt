@@ -40,5 +40,5 @@ const Questions = module.exports = mongoose.model('Questions', QuestionSema);
 
 //kerdes keresese
 module.exports.getQuestions = function (callback) {
-    Questions.findOne(callback);
+    Questions.find(callback);
 };

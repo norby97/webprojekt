@@ -15,6 +15,7 @@ import { ValidateService } from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { RegLoginService } from './services/reglogin.service';
 import { RegLoginGuard } from './guards/reglogin.guard';
+import { AdminGuard } from './guards/admin.guard';
 import { GameService } from './services/game.service';
 import { SettingsComponent } from './components/settings/settings.component';
 
@@ -26,7 +27,7 @@ const appRoutes = [
 {path: 'profile', component:ProfileComponent, canActivate :[RegLoginGuard]},
 {path: 'leaderboard', component:LeaderboardComponent, canActivate :[RegLoginGuard]},
 {path: 'game', component:GameComponent, canActivate :[RegLoginGuard]},
-{path: 'settings', component:SettingsComponent, canActivateSettings:[RegLoginGuard]}
+{path: 'settings', component:SettingsComponent, canActivate:[AdminGuard]}
 ]
 
 @NgModule({
@@ -48,7 +49,7 @@ const appRoutes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService,RegLoginService, RegLoginGuard, GameService],
+  providers: [ValidateService,RegLoginService, RegLoginGuard, GameService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

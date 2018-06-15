@@ -5,6 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const users = require('./routes/users');
+const games = require('./routes/games');
 const config = require('./config/database.js');
 const app = express();
 
@@ -42,6 +43,7 @@ require('./config/passport')(passport);
 
 //akarmi ami localhost:3000/users/*barmi* az abba a fajlba lesz
 app.use('/users', users);
+app.use('/games',games);
 
 //alap path lekezeles
 app.get('/', (req, res) => {

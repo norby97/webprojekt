@@ -46,6 +46,14 @@ export class RegLoginService {
     return this.http.get('http://localhost:3000/users/profile', {headers:headers}).map(res => res.json());
 }
 
+//elkuldjuk a  felhasznalo tokenjet es visszakapjuk a szervertol az adatait
+  ranglistaLekeres(){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/users/leaderboard', {headers:headers}).map(res => res.json());
+}
+
+
 //betoltjuk a tokent
   tokenBetolt(){
     const token = localStorage.getItem('id_token');
