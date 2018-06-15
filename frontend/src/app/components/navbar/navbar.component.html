@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+       <a class="navbar-brand" [routerLink] = "['/home']">Simon's Quizz Game</a>
+
+       <div id="navbar" class="collapse navbar-collapse" >
+
+         <ul class="nav navbar-nav mr-auto">
+           <li class="nav-item">
+             <a class="nav-link" [routerLink] = "['/home']">Home</a>
+           </li>
+
+
+           <li *ngIf="regloginService.loggedIn()" class="nav-item">
+             <a class="nav-link" [routerLink] = "['/game']">Game</a>
+           </li>
+
+           <li *ngIf="regloginService.loggedIn()" class="nav-item">
+             <a class="nav-link" [routerLink] = "['/profile']">My profile</a>
+           </li>
+
+
+         <li *ngIf="regloginService.loggedIn()" class="nav-item">
+           <a class="nav-link" [routerLink] = "['/leaderboard']">Leaderboard</a>
+         </li>
+       </ul>
+
+         <button *ngIf="!regloginService.loggedIn()" class="btn btn-outline-success my-2 my-sm-" type="button" [routerLink] = "['/login']" >Login</button>
+         <button *ngIf="!regloginService.loggedIn()" class="btn btn-outline-success my-2 my-sm-" type="button" [routerLink] = "['/register']" style="margin:10px" >Register</button>
+         <button *ngIf="regloginService.loggedIn()" class="btn btn-outline-success my-2 my-sm-" type="button" href="#" (click) ="logout()" >Logout</button>
+        </div>
+     </nav>
