@@ -21,4 +21,16 @@ export class RegLoginGuard implements CanActivate{
       }
 
     }
+
+//lechekolja hogy admin van-e belepve
+    canActivateSettings(){
+      if(this.regloginService.loggedIn() && this.regloginService.adminLoggedIn()){
+        console.log("valami");
+        return true;
+      }
+      else{
+        this.router.navigate(['/login']);
+        return false;
+      }
+    }
 }

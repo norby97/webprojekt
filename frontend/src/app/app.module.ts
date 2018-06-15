@@ -16,6 +16,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { RegLoginService } from './services/reglogin.service';
 import { RegLoginGuard } from './guards/reglogin.guard';
 import { GameService } from './services/game.service';
+import { SettingsComponent } from './components/settings/settings.component';
 
 //meagadjuk az utakat bizonyos oldalakhoz
 const appRoutes = [
@@ -24,8 +25,8 @@ const appRoutes = [
 {path: 'home', component:HomeComponent},
 {path: 'profile', component:ProfileComponent, canActivate :[RegLoginGuard]},
 {path: 'leaderboard', component:LeaderboardComponent, canActivate :[RegLoginGuard]},
-{path: 'game', component:GameComponent, canActivate :[RegLoginGuard]}
-
+{path: 'game', component:GameComponent, canActivate :[RegLoginGuard]},
+{path: 'settings', component:SettingsComponent, canActivateSettings:[RegLoginGuard]}
 ]
 
 @NgModule({
@@ -37,7 +38,8 @@ const appRoutes = [
     HomeComponent,
     GameComponent,
     LeaderboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

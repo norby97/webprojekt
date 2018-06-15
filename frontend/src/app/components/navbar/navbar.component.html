@@ -21,6 +21,10 @@
          <li *ngIf="regloginService.loggedIn()" class="nav-item">
            <a class="nav-link" [routerLink] = "['/leaderboard']">Leaderboard</a>
          </li>
+
+         <li *ngIf="regloginService.adminLoggedIn()" class="nav-item">
+           <a class="nav-link" [routerLink] = "['/settings']">Settings</a>
+         </li>
        </ul>
 
          <button *ngIf="!regloginService.loggedIn()" class="btn btn-outline-success my-2 my-sm-" type="button" [routerLink] = "['/login']" >Login</button>

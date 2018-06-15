@@ -57,9 +57,14 @@ export class RegLoginService {
   return tokenNotExpired('id_token');
 }
 
+  adminLoggedIn(){
+    const adminjog= JSON.parse(localStorage.getItem('felhasznalo'));
+    if(adminjog == null)return false;
+    return tokenNotExpired('id_token') && adminjog.admin;
+  }
+
 //kilepunk es toroljuk a locastorage-ot
-  logoutVegrehajt()
-  {
+  logoutVegrehajt(){
     this.regToken = null;
     this.felhasznalo = null;
     localStorage.clear();

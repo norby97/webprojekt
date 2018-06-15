@@ -13,7 +13,8 @@
       felhasznalonev: req.body.felhasznalonev,
       email : req.body.email,
       jelszo : req.body.jelszo,
-      pontszam : 0
+      pontszam : 0,
+      admin : 0
    });
     User.addUser(ujFelhasznalo, (err) =>{
      if(err) res.json({succes : false, msg:'Unsuccesfull registration!!!'});
@@ -47,7 +48,8 @@ router.post('/login',(req ,res, next) =>{
             nev : felhasznalo.nev,
             felhasznalonev: felhasznalo.felhasznalonev,
             email : felhasznalo.email,
-            pontszam : felhasznalo.pontszam
+            pontszam : felhasznalo.pontszam,
+            admin : felhasznalo.admin
           }
         });
       }

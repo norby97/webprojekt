@@ -28,6 +28,11 @@ const UserSema = mongoose.Schema({
   pontszam: {
     type: Number,
     required:true
+  },
+
+  admin: {
+    type: Number,
+    required : true
   }
 
 });
