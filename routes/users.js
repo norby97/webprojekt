@@ -9,7 +9,6 @@
  router.post('/register',(req ,res, next) =>{
    let ujFelhasznalo = new User ({
       nev: req.body.nev,
-
       felhasznalonev: req.body.felhasznalonev,
       email : req.body.email,
       jelszo : req.body.jelszo,
@@ -66,12 +65,17 @@ router.post('/login',(req ,res, next) =>{
    res.json({felhasznalo: req.user});
  });
 
- //leaderboard oldal
- router.get('/leaderboard'), (req ,res, next) =>{
-   const query ="{pontszam :{$gte : 0}}).sort({ pontszam : -1 }";
-   const rendez = "{ pontszam : -1 }";
-  res.json(User.find(query).sort(rendez));
- };
+
+ router.get('/leaderboard', (req ,res, next) =>{
+   console.log('leaderboard');
+    const query = {pontszam: { $gte: 0 }};
+     User.find(query,'nev felhasznalonev pontszam', function (err, users) {
+       if (err) console.log(err);
+       else{
+         res.json(users);
+       }
+   });
+  });
 
 
 module.exports = router;

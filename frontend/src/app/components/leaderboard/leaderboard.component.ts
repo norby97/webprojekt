@@ -9,7 +9,7 @@ import { Router } from '@angular/router'
 })
 export class LeaderboardComponent implements OnInit {
 
-  ranglista: Object;
+  ranglista: {nev:string, felhasznalonev:string , pontszam: Number}[];
 
   constructor(
     private regloginService : RegLoginService,
@@ -19,7 +19,9 @@ export class LeaderboardComponent implements OnInit {
   //tehat mikor betoltjuk a leaderbord oldalt akkor le kell kerjuk a felhasznalo adatait amit majd megjelenitunk
     ngOnInit() {
       this.regloginService.ranglistaLekeres().subscribe(ranglista => {
-        this.ranglista = ranglista.felhasznalonev;  
+        this.ranglista = ranglista;
+        this.ranglista.sort((a, b) => a.pontszam > b.pontszam ? -1 : a.pontszam < b.pontszam ? 1 : 0);
+        console.log(this.ranglista)
     }, err =>{
         console.log(err);
         return false;

@@ -42,3 +42,8 @@ const Questions = module.exports = mongoose.model('Questions', QuestionSema);
 module.exports.getQuestions = function (callback) {
     Questions.find(callback);
 };
+
+//kerdes beszurasa az adatbazisba
+module.exports.addQuestion = function(ujKerdes, callback){
+        ujKerdes.save(callback);
+};

@@ -18,4 +18,12 @@ export class GameService {
       headers.append('Content-Type','application/json');
       return this.http.get('http://localhost:3000/games/game', {headers:headers}).map(res => res.json());
     }
+
+    //kerdes hozzaadas keres elkuldese
+    kerdesHozzaadas(kerdes){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/games/addquestion', kerdes, {headers:headers}).map(res => res.json());
+  }
+
 }

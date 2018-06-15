@@ -1,3 +1,33 @@
-<p>
-  settings works!
-</p>
+<h2 class="page-header">Add question</h2>
+<form (submit)="hozzaadas()">
+  <div class="form-group">
+    <label>Question</label>
+    <input type="text" class="form-control" [(ngModel)]="kerdes" name="kerdes">
+  </div>
+  <div class="form-group">
+    <label>Answer 1</label>
+    <input type="text" class="form-control" [(ngModel)]="valasz1" name="valasz1">
+  </div>
+  <div class="form-group">
+    <label>Answer 2</label>
+    <input type="text" class="form-control" [(ngModel)]="valasz2" name="valasz2">
+  </div>
+  <div class="form-group">
+    <label>Answer 3</label>
+    <input type="text" class="form-control" [(ngModel)]="valasz3" name="valasz3">
+  </div>
+  <div class="form-group">
+    <label>Answer 4</label>
+    <input type="text" class="form-control" [(ngModel)]="valasz4" name="valasz4">
+  </div>
+  <div class="form-group">
+    <label>Number of correct anwser</label>
+    <select [(ngModel)]="helyes" name="helyes" class="custom-select">
+      <option value="1">One (1)</option>
+      <option value="2">Two (2)</option>
+      <option value="3">Three (3)</option>
+      <option value="3">Four (4)</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Add question">
+</form>
