@@ -8,14 +8,16 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "*",
-    "mongoose": "*",
-    "bcryptjs" : "*",
-    "cors": "*",
-    "jsonwebtoken":"*",
+    "bcryptjs": "*",
     "body-parser": "*",
+    "bower": "^1.8.4",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "ng2-simple-timer": "^1.3.3",
     "passport": "*",
-    "passport-jwt":"*"
+    "passport-jwt": "*"
   },
   "author": "Simon Norbert",
   "license": "ISC"

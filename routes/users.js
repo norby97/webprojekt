@@ -62,12 +62,13 @@ router.post('/login',(req ,res, next) =>{
 
  //profil oldal
  router.get('/profile',passport.authenticate('jwt', {session: false} ), (req ,res, next) =>{
+   //console.log("prpfil oldal");
    res.json({felhasznalo: req.user});
  });
 
-
+//leaderboard oldal
  router.get('/leaderboard', (req ,res, next) =>{
-   console.log('leaderboard');
+   //console.log('leaderboard');
     const query = {pontszam: { $gte: 0 }};
      User.find(query,'nev felhasznalonev pontszam', function (err, users) {
        if (err) console.log(err);

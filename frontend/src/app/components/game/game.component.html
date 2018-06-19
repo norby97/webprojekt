@@ -2,11 +2,12 @@
 <div class="jumbotron text-center">
     <h1 >{{kerdes.kerdes}}</h1>
     <div>
-    <button style="margin: 40px" type="button" class="btn btn-primary">{{kerdes.valasz1}}</button>
-    <button style="margin: 40px" type="button" class="btn btn-warning">{{kerdes.valasz2}}</button>
-    <button style="margin: 40px" type="button" class="btn btn-info">{{kerdes.valasz3}}</button>
-    <button style="margin: 40px" type="button" class="btn btn-danger">{{kerdes.valasz4}}</button>
+    <button style="margin: 40px" type="button" class="btn btn-primary" [disabled]='valasztott > 0 '  (click)="valasztott= 1; helyesvalasz()" >{{kerdes.valasz1}}</button>
+    <button style="margin: 40px" type="button" class="btn btn-warning"  [disabled]='valasztott > 0 ' (click)="valasztott= 2; helyesvalasz()">{{kerdes.valasz2}}</button>
+    <button style="margin: 40px" type="button" class="btn btn-info"   [disabled]='valasztott > 0 '  (click)="valasztott= 3; helyesvalasz()">{{kerdes.valasz3}}</button>
+    <button style="margin: 40px" type="button" class="btn btn-danger"  [disabled]='valasztott > 0 '  (click)="valasztott= 4; helyesvalasz()">{{kerdes.valasz4}}</button>
   </div>
+    <button style="margin: 40px" type="button" class="btn btn-secondary" (click)="valasztott=0; kovetkezo()" >Next question</button>
 </div>
 
 <div class="row">
