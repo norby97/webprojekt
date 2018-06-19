@@ -91,9 +91,8 @@ export class GameComponent implements OnInit , OnDestroy{
 
   ngOnDestroy(){
     this.felhasznalo.pontszam += this.pontszam;
-    console.log(this.felhasznalo.pontszam);
-    this.gameService.pontszamMentes(this.felhasznalo).subscribe(valami =>{
-      console.log(valami);
+    this.gameService.pontszamMentes(this.felhasznalo).subscribe(sikeres =>{
+      console.log(sikeres);
     }, err =>{
       console.log(err);
       return false;

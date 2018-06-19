@@ -21,7 +21,7 @@ export class LeaderboardComponent implements OnInit {
       this.regloginService.ranglistaLekeres().subscribe(ranglista => {
         this.ranglista = ranglista;
         this.ranglista.sort((a, b) => a.pontszam > b.pontszam ? -1 : a.pontszam < b.pontszam ? 1 : 0);
-        //console.log(this.ranglista)
+        console.log(this.ranglista)
     }, err =>{
         console.log(err);
         return false;

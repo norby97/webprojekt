@@ -13,7 +13,6 @@ export class AdminGuard implements CanActivate{
 //lechekolja hogy admin van-e belepve
   canActivate(){
     if(this.regloginService.loggedIn() && this.regloginService.adminLoggedIn()){
-      console.log("valami");
       return true;
     }
     else{

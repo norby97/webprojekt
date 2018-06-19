@@ -30,6 +30,6 @@ export class GameService {
     pontszamMentes(felhasznalo){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/games/savegame', felhasznalo, {headers:headers}).map(res => res.json());
+    return this.http.post('http://localhost:3000/users/savegame', felhasznalo, {headers:headers}).map(res => res.json());
   }
 }

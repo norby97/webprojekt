@@ -35,6 +35,7 @@ regisztracio(){
       jelszo: this.jelszo
     }
 
+
     //meghivjuk a validateservice-ben megirt ellenorzeseket
     if(!this.validateService.kiVanToltve(felhasznalo)){
       this.flashMessage.show("Please fill all the fields!!!", {cssClass: 'alert-danger', timeout: 3500 });
@@ -43,6 +44,13 @@ regisztracio(){
 
     if(!this.validateService.helyesEmail(felhasznalo.email)){
       this.flashMessage.show("Email doesn't match requirements!!!" , {cssClass : 'alert-danger', timeout: 3500});
+      return false;
+    }
+
+
+    //megnezzuk van mar ilyen nevu felhasznalo
+    if(!this.validateService.letezikMar(felhasznalo)){
+      this.flashMessage.show("Username already in use please choose another!!!", {cssClass: 'alert-danger', timeout: 3500 });
       return false;
     }
 

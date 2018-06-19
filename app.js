@@ -47,7 +47,7 @@ app.use('/games',games);
 
 //alap path lekezeles
 app.get('/', (req, res) => {
-  res.send("valami");
+  res.send("");
 });
 
 //itt inditom el a szervert a megfelelo porton

@@ -17,8 +17,7 @@ export class RegLoginService {
   regVegrehajt(felhasznalo){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', felhasznalo, {headers:headers})
-    .map(res => res.json());
+    return this.http.post('http://localhost:3000/users/register', felhasznalo, {headers:headers}).map(res => res.json());
   }
 
 //elkuldjuk a szervernek a login adatokat es visszakapjuk a tokent meg a user infot
@@ -65,6 +64,7 @@ export class RegLoginService {
   return tokenNotExpired('id_token');
 }
 
+//megnezuk hogy admin van-e bejelentkezve
   adminLoggedIn(){
     const adminjog= JSON.parse(localStorage.getItem('felhasznalo'));
     if(adminjog == null)return false;

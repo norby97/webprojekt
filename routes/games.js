@@ -48,22 +48,5 @@ router.post('/addquestion',(req ,res, next) =>{
     });
 });
 
-//pontszam lementese
-router.post('/savegame', (req, res, next) =>{
-  const aktfelhasznalonev = req.body.felhasznalonev;
-  const ujPontszam = req.body.pontszam;
-  //console.log(felhasznalonev + ujPontszam);
-  const insert = {$set : {pontszam : ujPontszam}};
-  const quety = {felhasznalonev : aktfelhasznalonev};
-  Questions.updateOne(query,insert ,function (err, eredmeny) {
-    if(err) throw err;
-    if (!eredmeny) {
-      return res.json({succes:false, msg:"Cannot update scores!!!"});
-    }
-    else {
-      return res.json({succes:false, msg:"Scores updated succesfully!!!"});;
-    }
-});
 
-});
 module.exports = router;
