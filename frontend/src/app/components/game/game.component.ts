@@ -26,7 +26,7 @@ export class GameComponent implements OnInit , OnDestroy{
     felhasznalonev:String,
     pontszam : 0
   };
-  pontszam: number = 0;
+  pontszam: Number = 0;
 
   megoldas: String;
   perc : number = 0;
