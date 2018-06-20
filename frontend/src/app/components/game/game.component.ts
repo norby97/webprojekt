@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { RegLoginService } from '../../services/reglogin.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { Observable} from 'rxjs/Observable';
+import { timer } from 'rxjs/observable/timer';
 import 'rxjs/add/operator/map';
-
 
 @Component({
   selector: 'app-game',
@@ -25,11 +26,13 @@ export class GameComponent implements OnInit , OnDestroy{
     felhasznalonev:String,
     pontszam : 0
   };
-  pontszam: number =0;
+  pontszam: number = 0;
 
   megoldas: String;
-  valasztott: Number;
-
+  perc : number = 0;
+  masodperc : number = 0;
+  valasztott: number = 0;
+  subscription : any;
 
   constructor(
     private  flashMessage : FlashMessagesService,
@@ -51,6 +54,7 @@ export class GameComponent implements OnInit , OnDestroy{
   }
 
   ngOnInit() {
+    this.pontszam = 0;
     //lekerjuk a felhasznalo adatait tudjuk majd megjeleniteni mikozben jatszik
     this.regloginService.profilLekeres().subscribe(profil => {
     this.felhasznalo = profil.felhasznalo;
@@ -65,8 +69,29 @@ export class GameComponent implements OnInit , OnDestroy{
         console.log(err);
         return false;
       });
+
+      //timer inicializalasa es inditasa
+
+      let t = timer(5000,1000);
+  let subscription = t.subscribe(x => {
+          if(x%60==0 && x != 0){
+            this.masodperc= x % 60
+            this.perc++;
+            }
+          else {
+            this.masodperc= x % 60;
+          }
+          if(this.perc == 10){
+            this.pontszam -= 10;
+            subscription.unsubscribe();
+          }
+      });
+
   }
 
+  levonas(){
+    this.pontszam-=10;
+  }
 
   helyesvalasz(){
     if(this.valasztott == this.kerdes.helyes){
@@ -74,6 +99,7 @@ export class GameComponent implements OnInit , OnDestroy{
       this.flashMessage.show("Congratulations your answer is correct!!!",{cssClass : 'alert-success', timeout : 5000 });
     }
     else{
+      this.pontszam=this.pontszam - 2;
        this.flashMessage.show("Unfortunately your answer is incorrect!!!\n Correct answer is: " + this.kerdes['valasz' + this.kerdes.helyes], {cssClass : 'alert-danger' ,timeout: 5000});
       }
   }
@@ -92,7 +118,7 @@ export class GameComponent implements OnInit , OnDestroy{
   ngOnDestroy(){
     this.felhasznalo.pontszam += this.pontszam;
     this.gameService.pontszamMentes(this.felhasznalo).subscribe(sikeres =>{
-      console.log(sikeres);
+      //console.log(sikeres);
     }, err =>{
       console.log(err);
       return false;

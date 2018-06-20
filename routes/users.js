@@ -5,6 +5,11 @@
  const User = require('../models/user');
  const config = require('../config/database');
 
+
+ function delay(ms, number) {
+     return new Promise( resolve => setTimeout(resolve, ms) );
+ }
+
  //regisztracio
  router.post('/register',(req ,res, next) =>{
    let ujFelhasznalo = new User ({
@@ -78,6 +83,17 @@ router.post('/login',(req ,res, next) =>{
    });
   });
 
+  router.post('/checkuser', (req,res,next) =>{
+    const felhasznalonev = req.body.felhasznalonev;
+    User.getUserByUsername(felhasznalonev , (err, felhasznalo) => {
+      if(err) throw err;
+      delay(2000);
+      //ha nem letezik a felahasznalo akkor uzenetet kuldunk vissz ellenben checkoljuk a jelszavat
+      if(felhasznalo==null) return res.json({succes:true, msg:"Free username!!!"});
+        else return res.json({succes:false, msg:"Username already exists!!!"});
+  });
+});
+
   //pontszam lementese
   router.post('/savegame', (req, res, next) =>{
     const aktfelhasznalonev = req.body.felhasznalonev;
@@ -91,7 +107,7 @@ router.post('/login',(req ,res, next) =>{
         return res.json({succes:false, msg:"Cannot update scores!!!"});
       }
       else {
-        return res.json({succes:false, msg:"Scores updated succesfully!!!"});;
+        return res.json({succes:true, msg:"Scores updated succesfully!!!"});;
       }
   });
 

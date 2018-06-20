@@ -23,7 +23,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 //port amelyiken elerheto a szerver
-const port = 3000;
+const port = process.env.PORT || 8080;
 
 //aktivalja a body-parsert amivel kiveszunk a formbol infot
 app.use(bodyParser.json());

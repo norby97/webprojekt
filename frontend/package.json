@@ -24,6 +24,7 @@
     "angular2-flash-message": "^1.0.2",
     "angular2-flash-messages": "^2.0.5",
     "angular2-jwt": "^0.2.3",
+    "bower": "^1.8.4",
     "core-js": "^2.5.4",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",

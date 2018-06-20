@@ -17,14 +17,14 @@ export class RegLoginService {
   regVegrehajt(felhasznalo){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', felhasznalo, {headers:headers}).map(res => res.json());
+    return this.http.post('users/register', felhasznalo, {headers:headers}).map(res => res.json());
   }
 
 //elkuldjuk a szervernek a login adatokat es visszakapjuk a tokent meg a user infot
   loginVegrehajt(felhasznalo){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/login', felhasznalo, {headers:headers}).map(res => res.json());
+    return this.http.post('users/login', felhasznalo, {headers:headers}).map(res => res.json());
 
   }
 
@@ -42,14 +42,21 @@ export class RegLoginService {
     this.tokenBetolt();
     headers.append('Authorization', this.regToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/profile', {headers:headers}).map(res => res.json());
+    return this.http.get('users/profile', {headers:headers}).map(res => res.json());
+}
+
+//lekerjuk egy adott felhasznalo letezik-e vagy sem
+  felhasznalonevCheck(felhasznalo){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  return this.http.post('users/checkuser', felhasznalo, {headers:headers}).map(res => res.json());
 }
 
 //elkuldjuk a  felhasznalo tokenjet es visszakapjuk a szervertol az adatait
   ranglistaLekeres(){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/leaderboard', {headers:headers}).map(res => res.json());
+    return this.http.get('users/leaderboard', {headers:headers}).map(res => res.json());
 }
 
 

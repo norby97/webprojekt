@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  
+
 regisztracio(){
     const felhasznalo = {
       nev: this.nev,
@@ -48,11 +50,6 @@ regisztracio(){
     }
 
 
-    //megnezzuk van mar ilyen nevu felhasznalo
-    if(!this.validateService.letezikMar(felhasznalo)){
-      this.flashMessage.show("Username already in use please choose another!!!", {cssClass: 'alert-danger', timeout: 3500 });
-      return false;
-    }
 
     //ha minden rendben van akkor kezdodhet a regisztracio
     this.regloginService.regVegrehajt(felhasznalo).subscribe(data => {
@@ -67,6 +64,28 @@ regisztracio(){
       }
 
   })
-  }
+}
+
+//megnezzuk van mar ilyen nevu felhasznalo
+ellenorzes(){
+let keres = {
+  felhasznalonev : this.felhasznalonev
+}
+  this.regloginService.felhasznalonevCheck(keres).subscribe(data => {
+      console.log(data);
+      if(data.success === true){
+        this.flashMessage.show("Username is free to use!!!" , {cssClass : 'alert-success', timeout: 3500});
+        return true;
+        }
+        else
+        {
+          this.flashMessage.show("Username is already in use!!!" , {cssClass : 'alert-danger', timeout: 3500});
+          return false;
+        }
+  }, err =>{
+    console.log(err);
+    return false;
+  });
+}
 
 }

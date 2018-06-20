@@ -2,12 +2,14 @@
 <div class="jumbotron text-center">
     <h1 >{{kerdes.kerdes}}</h1>
     <div>
-    <button style="margin: 40px" type="button" class="btn btn-primary" [disabled]='valasztott > 0 '  (click)="valasztott= 1; helyesvalasz()" >{{kerdes.valasz1}}</button>
-    <button style="margin: 40px" type="button" class="btn btn-warning"  [disabled]='valasztott > 0 ' (click)="valasztott= 2; helyesvalasz()">{{kerdes.valasz2}}</button>
-    <button style="margin: 40px" type="button" class="btn btn-info"   [disabled]='valasztott > 0 '  (click)="valasztott= 3; helyesvalasz()">{{kerdes.valasz3}}</button>
-    <button style="margin: 40px" type="button" class="btn btn-danger"  [disabled]='valasztott > 0 '  (click)="valasztott= 4; helyesvalasz()">{{kerdes.valasz4}}</button>
+    <button style="margin: 40px" type="button" class="btn btn-primary" [disabled]='perc >= 10' [disabled]='valasztott > 0 ' (click)="valasztott= 1; helyesvalasz()" >{{kerdes.valasz1}}</button>
+    <button style="margin: 40px" type="button" class="btn btn-warning" [disabled]='perc >= 10' [disabled]='valasztott > 0 ' (click)="valasztott= 2; helyesvalasz()">{{kerdes.valasz2}}</button>
+    <button style="margin: 40px" type="button" class="btn btn-info" [disabled]='perc >= 10' [disabled]='valasztott > 0 ' (click)="valasztott= 3; helyesvalasz()">{{kerdes.valasz3}}</button>
+    <button style="margin: 40px" type="button" class="btn btn-danger" [disabled]='perc >= 10' [disabled]='valasztott > 0 ' (click)="valasztott= 4; helyesvalasz()">{{kerdes.valasz4}}</button>
   </div>
-    <button style="margin: 40px" type="button" class="btn btn-secondary" (click)="valasztott=0; kovetkezo()" >Next question</button>
+    <button style="margin: 40px" type="button" class="btn btn-secondary" [disabled]='perc >= 10' [disabled]='valasztott == 0' (click)="valasztott=0; kovetkezo()" >Next question</button>
+    <br>
+    <button style="margin: 40px" type="button" class="btn btn-secondary" [hidden]='perc < 10 && pontszam < 50' (click)='levonas()' [routerLink]="['/leaderboard']" >Save Game</button>
 </div>
 
 <div class="row">
@@ -18,7 +20,7 @@
   </div>
   <div class="col-md-4">
     <h2 >Time</h2>
-    <p></p>
+    <h2>{{perc}} minutes {{masodperc}} seconds</h2>
   </div>
   <div class="col-md-4">
     <h2>Actual Score</h2>
