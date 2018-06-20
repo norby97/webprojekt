@@ -1102,19 +1102,19 @@ var GameService = /** @class */ (function () {
     GameService.prototype.kerdesLekeres = function () {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/games/game', { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.get('games/game', { headers: headers }).map(function (res) { return res.json(); });
     };
     //kerdes hozzaadas keres elkuldese
     GameService.prototype.kerdesHozzaadas = function (kerdes) {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/games/addquestion', kerdes, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('games/addquestion', kerdes, { headers: headers }).map(function (res) { return res.json(); });
     };
     //elkuldi a szervernek a pontszamot hogy mentse le
     GameService.prototype.pontszamMentes = function (felhasznalo) {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/savegame', felhasznalo, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('users/savegame', felhasznalo, { headers: headers }).map(function (res) { return res.json(); });
     };
     GameService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
