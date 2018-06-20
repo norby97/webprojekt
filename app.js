@@ -45,9 +45,9 @@ require('./config/passport')(passport);
 app.use('/users', users);
 app.use('/games',games);
 
-//alap path lekezeles
-app.get('/', (req, res) => {
-  res.send("");
+//barmilyen pathet el kell kuldeni az angularnak
+app.get('*', (req, res) => {
+  res.sendfile('./frontend/src/index.html');
 });
 
 //itt inditom el a szervert a megfelelo porton
